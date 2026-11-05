@@ -1,0 +1,219 @@
+!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101c19">
+  <title>SITTE Technologies | Réseaux, télécoms, cybersécurité</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17231f;
+      --muted: #64716b;
+      --paper: #f7f8f4;
+      --white: #fff;
+      --green: #164b3c;
+      --lime: #c9ef5b;
+      --orange: #e76d45;
+      --line: #dce2dc;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Segoe UI", "Aptos", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.6; }
+    a { color: inherit; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .topbar { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; min-height: 82px; border-bottom: 1px solid rgba(255,255,255,.16); color: var(--white); }
+    .brand { text-decoration: none; font-size: 15px; font-weight: 800; letter-spacing: .04em; }
+    .brand span { color: var(--lime); }
+    nav { display: flex; gap: 30px; align-items: center; }
+    nav a { color: rgba(255,255,255,.78); text-decoration: none; font-size: 13px; }
+    nav a:hover, nav a:focus-visible { color: var(--lime); }
+    .hero { position: relative; overflow: hidden; min-height: 690px; margin-top: -82px; padding: 82px 0 64px; background: #101c19; color: var(--white); }
+    .hero::before { position: absolute; inset: 0 0 0 42%; content: ""; opacity: .16; background-image: linear-gradient(rgba(201,239,91,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(201,239,91,.18) 1px, transparent 1px); background-size: 56px 56px; mask-image: linear-gradient(90deg, transparent, #000 45%); }
+    .hero::after { position: absolute; right: -120px; bottom: -300px; width: 650px; height: 650px; border: 1px solid rgba(201,239,91,.25); border-radius: 50%; content: ""; box-shadow: 0 0 0 50px rgba(201,239,91,.035), 0 0 0 110px rgba(201,239,91,.025); }
+    .hero-inner { position: relative; z-index: 1; padding-top: 106px; }
+    .eyebrow { margin: 0 0 22px; color: var(--lime); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: 0; font-family: var(--serif); font-size: clamp(48px, 7vw, 82px); font-weight: 400; line-height: 1.03; }
+    h1 em { color: var(--lime); font-weight: 400; }
+    .hero-copy { max-width: 590px; margin: 26px 0 0; color: rgba(255,255,255,.74); font-size: 17px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border: 1px solid var(--lime); background: var(--lime); color: var(--ink); font-size: 13px; font-weight: 700; text-decoration: none; transition: background .2s ease, color .2s ease; }
+    .button:hover { background: transparent; color: var(--lime); }
+    .button.secondary { border-color: rgba(255,255,255,.4); background: transparent; color: var(--white); }
+    .button.secondary:hover { border-color: var(--lime); color: var(--lime); }
+    .hero-bottom { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-top: 82px; }
+    .coordinates { color: rgba(255,255,255,.75); font-size: 12px; letter-spacing: .06em; }
+    .hero-facts { display: flex; flex-wrap: wrap; gap: 10px 24px; max-width: 510px; }
+    .hero-facts span { color: rgba(255,255,255,.8); font-size: 12px; }
+    .hero-facts span::before { display: inline-block; width: 6px; height: 6px; margin: 0 9px 1px 0; background: var(--orange); content: ""; }
+    section { padding: 102px 0; }
+    .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 48px; }
+    .kicker { margin: 0 0 14px; color: var(--green); font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h2 { max-width: 600px; margin: 0; font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 400; line-height: 1.08; }
+    .section-intro { max-width: 470px; margin: 0; color: var(--muted); font-size: 15px; }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .service { min-height: 276px; padding: 30px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.58); }
+    .service-label { margin: 0 0 26px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    h3 { margin: 0; font-family: var(--serif); font-size: 28px; font-weight: 400; line-height: 1.2; }
+    .service p:not(.service-label) { max-width: 470px; margin: 14px 0 24px; color: var(--muted); font-size: 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tags span { padding: 5px 9px; border: 1px solid var(--line); color: #435149; font-size: 11px; }
+    .method { background: #e9eee8; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #cbd4cb; }
+    .step { padding: 24px 24px 0 0; }
+    .step-number { display: block; margin: 0 0 24px; color: var(--orange); font-family: var(--serif); font-size: 32px; }
+    .step h3 { font-size: 25px; }
+    .step p { max-width: 240px; margin: 12px 0 0; color: var(--muted); font-size: 14px; }
+    .audience { display: grid; grid-template-columns: 1fr 1fr; gap: 76px; }
+    .list { margin: 32px 0 0; padding: 0; list-style: none; }
+    .list li { padding: 19px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+    .list strong { display: block; margin-bottom: 4px; color: var(--ink); font-size: 15px; }
+    .contact { background: var(--green); color: var(--white); }
+    .contact .kicker { color: var(--lime); }
+    .contact .section-intro { color: rgba(255,255,255,.72); }
+    .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; margin-top: 48px; }
+    .contact-details { display: grid; align-content: start; gap: 24px; }
+    .detail { padding-top: 14px; border-top: 1px solid rgba(255,255,255,.25); }
+    .detail span { display: block; color: rgba(255,255,255,.65); font-size: 12px; }
+    .detail strong, .detail a { display: inline-block; margin-top: 5px; color: var(--white); font-size: 16px; font-weight: 600; text-decoration: none; }
+    form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    label { display: grid; gap: 7px; color: rgba(255,255,255,.82); font-size: 12px; }
+    label.wide { grid-column: 1 / -1; }
+    input, textarea { width: 100%; padding: 12px 13px; border: 1px solid rgba(255,255,255,.34); border-radius: 0; outline: none; background: rgba(255,255,255,.08); color: var(--white); font: inherit; font-size: 14px; }
+    input:focus, textarea:focus { border-color: var(--lime); }
+    textarea { min-height: 108px; resize: vertical; }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,.5); }
+    form .button { width: fit-content; margin-top: 2px; }
+    footer { padding: 24px 0; background: #101c19; color: rgba(255,255,255,.64); font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    footer a { color: inherit; text-decoration: none; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, 600px); }
+      .topbar { min-height: 72px; align-items: flex-start; flex-direction: column; justify-content: center; gap: 5px; }
+      nav { max-width: 100%; gap: 16px; overflow-x: auto; }
+      nav a { flex: 0 0 auto; font-size: 11px; }
+      .hero { min-height: auto; margin-top: -72px; padding: 72px 0 38px; }
+      .hero-inner { padding-top: 100px; }
+      h1 { font-size: clamp(44px, 12vw, 64px); }
+      .hero-copy { font-size: 15px; }
+      .hero-bottom { align-items: flex-start; flex-direction: column; margin-top: 56px; }
+      section { padding: 72px 0; }
+      .section-head, .audience, .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+      .section-head { margin-bottom: 32px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service { min-height: 0; padding: 24px; }
+      .steps { grid-template-columns: 1fr 1fr; row-gap: 30px; }
+      .step { padding-right: 14px; }
+      .step-number { margin-bottom: 14px; }
+      .contact-grid { gap: 40px; margin-top: 34px; }
+    }
+    @media (max-width: 430px) {
+      form { grid-template-columns: 1fr; }
+      label.wide { grid-column: auto; }
+      .steps { grid-template-columns: 1fr; }
+      .step { padding-top: 20px; border-top: 1px solid #cbd4cb; }
+      .step-number { margin-bottom: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar wrap" id="top">
+    <a class="brand" href="#top">SITTE <span>Technologies</span></a>
+    <nav aria-label="Navigation principale">
+      <a href="#services">Services</a><a href="#methode">Méthode</a><a href="#clients">Clients</a><a href="#devis">Devis</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <p class="eyebrow">Infrastructures réseau · Télécoms · Cybersécurité</p>
+        <h1>Des réseaux qui <em>tiennent</em> quand tout le reste repose dessus.</h1>
+        <p class="hero-copy">SITTE Technologies conçoit, installe et maintient les réseaux des administrations, des banques et des entreprises au Tchad. Un interlocuteur, de l'étude à l'assistance.</p>
+        <div class="actions"><a class="button" href="#devis">Demander un devis</a><a class="button secondary" href="#services">Voir nos services</a></div>
+        <div class="hero-bottom">
+          <span class="coordinates">N'Djamena · 12°07′ N 15°03′ E</span>
+          <div class="hero-facts"><span>Siège à N'Djamena</span><span>Réseaux, télécoms, cybersécurité</span><span>Maintenance avec délais d'intervention écrits</span><span>Français et anglais</span></div>
+        </div>
+      </div>
+    </section>
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head"><div><p class="kicker">Services</p><h2>Quatre métiers, un seul réseau.</h2></div><p class="section-intro">Nous couvrons la chaîne complète : ce qui relie les bureaux, ce qui les protège, ce qui les maintient en marche et ce qui les rattache entre eux.</p></div>
+        <div class="services-grid">
+          <article class="service"><p class="service-label">Couche physique et locale</p><h3>Installation d'infrastructures réseau</h3><p>Routeurs, commutateurs, câblage structuré, Wi-Fi professionnel et réseaux reliant plusieurs bureaux.</p><div class="tags"><span>Câblage</span><span>Wi-Fi</span><span>Routage</span><span>Multisite</span></div></article>
+          <article class="service"><p class="service-label">Protection</p><h3>Sécurité des réseaux</h3><p>Pare-feu, segmentation, sécurisation des accès, sauvegardes de configuration et audits techniques.</p><div class="tags"><span>Pare-feu</span><span>VLAN</span><span>Accès</span><span>Audit</span></div></article>
+          <article class="service"><p class="service-label">Exploitation</p><h3>Maintenance informatique et réseau</h3><p>Surveillance, dépannage, entretien préventif et mises à jour, avec des délais d'intervention fixés par contrat.</p><div class="tags"><span>Supervision</span><span>Dépannage</span><span>Préventif</span><span>Délais d'intervention</span></div></article>
+          <article class="service"><p class="service-label">Longue distance</p><h3>Fibre optique et interconnexion de sites</h3><p>Études de site, raccordement de bâtiments et liaison entre bureaux. Les travaux spécialisés sont confiés à des partenaires qualifiés.</p><div class="tags"><span>Étude de site</span><span>Raccordement</span><span>Interconnexion</span></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="method" id="methode">
+      <div class="wrap">
+        <div class="section-head"><div><p class="kicker">Méthode</p><h2>De l'étude à l'assistance, dans cet ordre.</h2></div><p class="section-intro">Chaque projet suit les mêmes quatre étapes. Vous savez ce qui est fait, ce qui reste à faire et qui répond en cas de panne.</p></div>
+        <div class="steps">
+          <article class="step"><span class="step-number">01</span><h3>Étude</h3><p>Visite des sites, relevé des besoins, schéma de l'architecture et devis détaillé.</p></article>
+          <article class="step"><span class="step-number">02</span><h3>Fourniture</h3><p>Équipements authentiques, achetés auprès de distributeurs agréés, avec garanties.</p></article>
+          <article class="step"><span class="step-number">03</span><h3>Déploiement</h3><p>Installation supervisée, tests de chaque liaison, documentation technique remise.</p></article>
+          <article class="step"><span class="step-number">04</span><h3>Maintenance</h3><p>Contrat d'assistance avec délais d'intervention clairs et entretien préventif.</p></article>
+        </div>
+      </div>
+    </section>
+    <section id="clients">
+      <div class="wrap audience">
+        <div><p class="kicker">Clients</p><h2>Ceux qui nous confient leur réseau</h2><ul class="list">
+          <li><strong>Ministères et administrations</strong>Câblage, renouvellement d'équipements, sécurisation, maintenance.</li>
+          <li><strong>Banques et assurances</strong>Agences interconnectées, accès protégés, continuité de service.</li>
+          <li><strong>Opérateurs télécoms</strong>Sous-traitance d'installation et d'intégration.</li>
+          <li><strong>Entreprises, universités, ONG</strong>Réseaux de bureaux et de campus, Wi-Fi, assistance.</li>
+          <li><strong>Institutions internationales</strong>Sites multiples, documentation conforme aux appels d'offres.</li>
+        </ul></div>
+        <div><p class="kicker">Engagements</p><h2>Ce que nous nous engageons à faire</h2><ul class="list">
+          <li><strong>Des installations testées</strong>Chaque liaison est vérifiée avant la remise du chantier.</li>
+          <li><strong>Des devis transparents</strong>Matériel, main-d'œuvre, taxes et garanties détaillés ligne par ligne.</li>
+          <li><strong>Une documentation complète</strong>Schémas, plans d'adressage et configurations remis au client.</li>
+          <li><strong>Une assistance après installation</strong>Contrats de maintenance avec délais d'intervention écrits.</li>
+          <li><strong>Des techniciens compétents</strong>Une équipe formée, des spécialistes externes quand le projet l'exige.</li>
+        </ul></div>
+      </div>
+    </section>
+    <section class="contact" id="devis">
+      <div class="wrap">
+        <div class="section-head"><div><p class="kicker">Devis</p><h2>Parlez-nous de votre réseau.</h2></div><p class="section-intro">Décrivez vos sites et votre besoin. Nous revenons vers vous avec les questions utiles et une première estimation.</p></div>
+        <div class="contact-grid">
+          <div class="contact-details">
+            <div class="detail"><span>Siège</span><strong>N'Djamena, Tchad</strong></div>
+            <div class="detail"><span>Téléphone</span><a href="tel:+23568637676">+235 68 63 76 76</a></div>
+            <div class="detail"><span>E-mail</span><a href="mailto:abbassitte@gmail.com">abbassitte@gmail.com</a></div>
+          </div>
+          <form id="quote-form">
+            <label>Nom<input name="nom" autocomplete="name" required></label>
+            <label>Organisation<input name="organisation" autocomplete="organization"></label>
+            <label class="wide">E-mail ou téléphone<input name="contact" required></label>
+            <label class="wide">Besoin<textarea name="besoin" required></textarea></label>
+            <label class="wide">Votre projet<textarea name="projet" required></textarea></label>
+            <button class="button" type="submit">Demander un devis</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap footer-inner"><span>© 2026 SITTE Technologies · N'Djamena, Tchad</span><span><a href="tel:+23568637676">+235 68 63 76 76</a> · <a href="mailto:abbassitte@gmail.com">abbassitte@gmail.com</a></span></div></footer>
+  <script>
+    document.querySelector("#quote-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const fields = new FormData(event.currentTarget);
+      const message = [
+        "Nom : " + fields.get("nom"),
+        "Organisation : " + (fields.get("organisation") || ""),
+        "E-mail ou téléphone : " + fields.get("contact"),
+        "Besoin : " + fields.get("besoin"),
+        "Votre projet : " + fields.get("projet")
+      ].join("\n");
+      window.location.href = "mailto:abbassitte@gmail.com?subject=" + encodeURIComponent("Demande de devis SITTE Technologies") + "&body=" + encodeURIComponent(message);
+    });
+  </script>
+</body>
+</html>
